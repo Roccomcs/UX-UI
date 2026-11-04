@@ -1,0 +1,15 @@
+# Local previews, checks and temporary assets
+.work/
+work/
+__pycache__/
+*.py[cod]
+.venv/
+node_modules/
+
+# Editor and operating system files
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+Desktop.ini
+*.log
