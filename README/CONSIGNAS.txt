@@ -1,0 +1,140 @@
+De la hoja en blanco a la primera pantalla
+
+Ya saben para quién diseñan (user personas), qué necesita esa persona (POV), cómo piensa la app (card sorting y mapa de sitio) y qué tiene que hacer (funcionalidades). Ahora toca hacerse cargo de la hoja en blanco. Vayan en orden: cada paso se apoya en el anterior.
+0. Antes de abrir Figma
+
+    Tenemos a mano los user personas, el POV, el mapa de sitio y la lista de funcionalidades.
+    Podemos decir en una frase qué problema resuelve la app y para quién.
+
+1. Flujos
+
+    Para cada tarea clave dibujamos el flujo: dónde empieza, qué pasos tiene y dónde termina.
+    Además del camino ideal, pensamos qué pasa cuando algo sale distinto: la persona cancela, se equivoca, no tiene conexión o no dio un permiso.
+    Marcamos los momentos en que es la app la que toma la iniciativa: el resumen de la mañana, un aviso de presión, el bloqueo.
+    Revisamos que cada flujo respete el mapa de sitio. Si un flujo nos obliga a mover algo, lo anotamos para justificarlo.
+
+2. Inventario de pantallas
+
+    Hicimos la lista de todas las pantallas que salen de los flujos, cada una con su nombre.
+    Para cada pantalla definimos qué tiene que lograr ahí la persona, qué información muestra y cuál es la acción principal.
+    Hay una sola acción principal por pantalla. El resto son secundarias.
+    Detectamos qué se repite entre pantallas (encabezados, cards de tarea, botones). Eso va a formar parte del design system.
+
+3. Estructura: grilla y espaciado
+
+    Elegimos un tamaño base de pantalla (por ejemplo, 390 × 844) y lo usamos en todas.
+    Definimos la grilla. En mobile lo más habitual son 4 columnas. Fijamos los márgenes laterales y la separación entre columnas.
+    Trabajamos con espaciado de 8 puntos: todos los espaciados, tamaños y alturas son múltiplos de 8, y usamos 4 para los ajustes finos.
+    Respetamos las zonas seguras: la barra de estado arriba y la zona del gesto de inicio abajo.
+    Definimos la navegación principal. ¿Las secciones del mapa de sitio entran en una barra inferior? Con 5 o menos funciona; con más, hay que repensarla.
+    Las acciones que se usan más seguido están en la mitad de abajo, al alcance del pulgar.
+
+4. Patrones, leyes y principios
+
+Para cada pantalla, definimos qué usamos y por qué. Algunos ejemplos pensados para esta app:
+
+Ejemplos de Leyes de UX
+
+    Fitts: el botón para crear una tarea es grande y queda al alcance del pulgar.
+    Hick: si la configuración tiene muchas opciones, las agrupamos y las mostramos de a poco.
+    Jakob: usamos patrones que la gente ya conoce de otras apps de tareas y de calendario.
+    Miller: no mostramos veinte tareas iguales una abajo de la otra. Las agrupamos por momento del día o por proyecto.
+    Zeigarnik: las tareas pendientes quedan en la cabeza. ¿Cómo las mostramos sin abrumar?
+    Gradiente de meta: la racha y el progreso del día motivan más cuando se ve cuánto falta.
+    Pico-final: el resumen de la mañana es el cierre del día anterior. ¿Con qué sensación queda la persona?
+    Tesler: la complejidad de las reglas (cupos, umbrales, pausas) la tiene que resolver la app, no la persona.
+    Doherty: cuando marcás una tarea, la app responde al instante.
+    Von Restorff: lo que tiene que destacarse, como el aviso de bloqueo, se diferencia de todo lo demás.
+
+Principios de la Gestalt: proximidad, semejanza y región común, para agrupar la información.
+
+Patrones para evaluar: barra de navegación inferior, botón flotante, hojas que suben desde abajo (bottom sheets), deslizar para marcar, selector de día / semana / mes, mensajes temporales con “deshacer”, onboarding de a pasos y pedido de permisos en el momento en que hacen falta.
+
+    Cada patrón que elegimos tiene un porqué ligado a nuestros usuarios.
+
+5. Wireframes
+
+    Empezamos en baja fidelidad: en grises, sin color y sin tipografía definitiva.
+    Usamos contenido real y no lorem ipsum: nombres de tareas, horarios y motivos sacados de las entrevistas.
+    Armamos un wireframe por cada pantalla del inventario y los conectamos según los flujos.
+    Los recorremos de punta a punta. ¿Se puede completar cada tarea clave?
+    Antes de pasar a lo visual, se los mostramos a alguien.
+
+6. Lenguaje visual
+
+Todo empieza con una pregunta: ¿qué queremos que sienta la persona cuando abre la app? Esta app presiona. ¿Cómo se ve una presión que ayuda y no castiga?
+
+    Elegimos de 3 a 5 palabras que definan la personalidad de la app (por ejemplo: firme, cercana, enérgica, clara) y armamos un moodboard.
+
+Tipografía
+
+    Elegimos una tipografía primaria y una secundaria, o una sola familia trabajando con pesos y variables.
+    Armamos una escala tipográfica (títulos, subtítulos, cuerpo y etiquetas) con tamaños e interlineados definidos.
+    Se lee bien en tamaños chicos y en pantallas con mucha información, como la planificación semanal y la mensual.
+
+Color
+
+    Definimos un color principal, uno secundario y uno de acento. ¿Usamos la regla 60-30-10 u otra proporción? ¿Por qué?
+    Elegimos los colores de feedback: éxito, error, advertencia e información.
+    Ojo con el rojo: en esta app un error, un castigo y un bloqueo se pueden confundir. Decidimos qué color comunica cada cosa.
+    Verificamos el contraste (4.5:1 en texto) y chequeamos que ninguna información dependa solo del color.
+    Cada color tiene un nombre según su uso (fondo, texto, éxito, error), así después se convierte en una variable.
+
+Formas
+
+    Definimos los radios de las esquinas: más redondeados (amables) o más rectos (serios). Usamos el mismo criterio en botones, cards e inputs.
+
+Iconografía
+
+    Elegimos el estilo: lineal o sólido, de uno o de dos colores, con el mismo grosor de trazo y el mismo tamaño base (por ejemplo, 24 px).
+    Usamos una sola librería o un set propio, sin mezclar estilos.
+    Los íconos importantes van acompañados de un texto.
+
+Ilustraciones
+
+    ¿Va a haber ilustraciones? ¿Dónde? Por ejemplo: estados vacíos, onboarding, resumen del día, logros.
+    El estilo es coherente con la iconografía y con las formas.
+    ¿Va a haber un personaje o una mascota? Si lo hay, ¿cambia según el mood o la racha?
+
+7. Heurísticas, pantalla por pantalla
+
+Para cada pantalla, nos hacemos estas preguntas basadas en las 10 heurísticas de Nielsen:
+
+    Visibilidad del estado del sistema: ¿la persona sabe cuántas tareas le faltan, si el bloqueo está activo y cuánto le queda?
+    Relación con el mundo real: ¿usamos las palabras de la persona (“imprevisto”) o las del sistema (“motivo externo”)?
+    Control y libertad: ¿puede deshacer una tarea que marcó por error, cancelar o salir de un flujo?
+    Consistencia y estándares: ¿el mismo botón hace lo mismo en todas las pantallas?
+    Prevención de errores: ¿avisamos antes de que elimine una tarea vencida, que igual va a contar como no cumplida?
+    Reconocer antes que recordar: ¿le mostramos cuántos imprevistos y pausas le quedan, o tiene que acordarse?
+    Flexibilidad y eficiencia: ¿hay atajos para quien usa mucho la app, como crear por audio o deslizar para marcar?
+    Diseño estético y minimalista: ¿cada elemento de la pantalla es necesario?
+    Reconocer y recuperarse de errores: ¿el mensaje de error dice qué pasó y cómo seguir?
+    Ayuda y documentación: ¿dónde se explica cómo funciona el castigo?
+
+    Para cada pantalla anotamos qué heurísticas cumple y cuál nos obligó a cambiar algo.
+
+8. Pantallas y estados que siempre se olvidan
+
+    Estados vacíos: sin tareas, sin proyectos, sin grupos, sin amigos y sin historial.
+    Carga: skeleton loaders mientras se cargan los datos.
+    Feedback del sistema: tarea marcada, cambios guardados, mensaje con opción de deshacer.
+    Errores: sin conexión, el audio no se entendió, la foto no se pudo leer, la persona no dio un permiso.
+    Límites: se terminaron los imprevistos o las pausas de la semana, o la tarea ya se reprogramó 2 veces.
+    Confirmaciones: eliminar algo, salir de un grupo, desactivar el castigo.
+    Primera vez: el onboarding, el pedido de permisos y cada sección cuando todavía está vacía.
+    Notificaciones: también se diseñan.
+    Momentos clave: el resumen de la mañana, la pantalla de bloqueo, una racha larga y una racha cortada.
+    Estados de cada componente: normal, presionado, deshabilitado, con error y seleccionado.
+
+9. Accesibilidad desde el principio
+
+    Contraste, tamaño de texto, áreas táctiles de al menos 44 × 44 px y etiquetas en los elementos interactivos.
+    Todo lo que se puede hacer por audio o por foto también se puede hacer escribiendo.
+    Si la persona agranda el tamaño del texto desde el celular, la pantalla sigue funcionando.
+    Pasamos Stark a medida que avanzamos, no recién al final.
+
+10. Antes de pasar a la UI final
+
+    Podemos defender el porqué de cada pantalla.
+    Todo sale del design system: no hay valores sueltos.
+    Volvemos al POV: ¿la app resuelve lo que dijimos que iba a resolver?
