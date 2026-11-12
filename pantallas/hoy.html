@@ -1,18 +1,29 @@
-<!doctype html><html lang="es-AR"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="color-scheme" content="light dark"><title>Hoy, a tu ritmo. — Compás · Diseño</title><link rel="stylesheet" href="../assets/app.css"></head><body class="screen-page "><fieldset class="theme-controls"><legend class="sr-only">Modo de color</legend><button type="button" data-theme-choice="light" aria-pressed="true" aria-label="Modo claro">Claro</button><button type="button" data-theme-choice="dark" aria-pressed="false" aria-label="Modo oscuro">Oscuro</button><button type="button" data-theme-choice="contrast" aria-pressed="false" aria-label="Modo alto contraste">Contraste</button></fieldset><a class="skip" href="#contenido">Ir al contenido</a><div class="review-layout"><aside class="review-rail"><a class="rail-brand" href="../index.html"><svg
-  xmlns="http://www.w3.org/2000/svg"
-  width="24"
-  height="24"
-  viewBox="0 0 24 24"
-  fill="none"
-  stroke="currentColor"
-  stroke-width="2"
-  stroke-linecap="round"
-  stroke-linejoin="round"
->
-  <path d="m16.24 7.76-1.804 5.411a2 2 0 0 1-1.265 1.265L7.76 16.24l1.804-5.411a2 2 0 0 1 1.265-1.265z" />
-  <circle cx="12" cy="12" r="10" />
-</svg>
- compás<span>ESTUDIO DE PANTALLAS</span></a><div><span class="eyebrow">02 · Hoy</span><h2>Hoy, a tu ritmo.</h2><p>Diseño de alta fidelidad · 011</p><p class="review-note">Boceto visual con contenido de ejemplo. Los enlaces muestran otras pantallas; no crean cuentas ni guardan datos.</p><a class="rail-switch" href="../wireframes/hoy.html"><svg
+<!doctype html><html lang="es-AR"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="color-scheme" content="light dark"><title>Tu día — Compass · Diseño</title><link rel="stylesheet" href="../assets/app.css"><link rel="stylesheet" href="../assets/redesign.css"><style>
+.hoy-options{display:flex;gap:4px;padding:5px;margin:0 0 14px;border:1px solid var(--color-line);border-radius:8px}
+.hoy-options button{flex:1;min-height:44px;border:0;border-radius:5px;background:transparent;color:inherit;font:inherit;font-weight:700;cursor:pointer}
+.hoy-options button[aria-pressed=true]{background:var(--hoy-nav);color:var(--hoy-nav-ink)}
+body[data-look=orden]{--hoy-bg:#f8f3ee;--hoy-ink:#2c181b;--hoy-panel:#f2dedb;--hoy-nav:#2e1920;--hoy-nav-ink:#fff6f3;--hoy-cta:#a2263a;--hoy-cta-ink:#fff;--hoy-active:#ffc3c4}
+body[data-look=impulso]{--hoy-bg:#fff7e8;--hoy-ink:#25170f;--hoy-panel:#ffe0a1;--hoy-nav:#fff7e8;--hoy-nav-ink:#25170f;--hoy-cta:#ffbb36;--hoy-cta-ink:#25170f;--hoy-active:#a03a10}
+body[data-look=enfoque]{--hoy-bg:#151721;--hoy-ink:#f8f4ff;--hoy-panel:#27243a;--hoy-nav:#202233;--hoy-nav-ink:#f8f4ff;--hoy-cta:#c7adff;--hoy-cta-ink:#1b112f;--hoy-active:#d8c2ff}
+body[data-look] .phone{background:var(--hoy-bg);color:var(--hoy-ink)}
+body[data-look] .status-bar,body[data-look] .app-header{background:var(--hoy-nav);color:var(--hoy-nav-ink)}
+body[data-look] .app-header :is(a,button){color:inherit}
+body[data-look] .daily-hero{background:var(--hoy-panel);color:var(--hoy-ink);border:0;border-radius:8px}
+body[data-look] .daily-hero :is(.eyebrow,.deadline-copy,.progress){color:inherit}
+body[data-look] .mood-strip{background:var(--hoy-panel);color:var(--hoy-ink)}
+body[data-look] .mood-strip :is(p,small),body[data-look] .task :is(p,strong){color:var(--hoy-ink)}
+body[data-look] .sticky-action{background:var(--hoy-bg);padding:10px 16px}
+body[data-look] .sticky-action .button{background:var(--hoy-cta);color:var(--hoy-cta-ink);border:0;font-weight:850;min-height:48px}
+body[data-look] .bottom-nav{background:var(--hoy-nav);color:var(--hoy-nav-ink);border:0}
+body[data-look] .bottom-nav a{color:inherit;border-radius:0;background:transparent}
+body[data-look] .bottom-nav a[aria-current]{color:var(--hoy-active);box-shadow:inset 0 -3px currentColor}
+body[data-look=orden] .sticky-action .button{border-radius:4px;justify-content:space-between}
+body[data-look=impulso] .sticky-action .button{border-radius:12px;box-shadow:0 3px #7b4314}
+body[data-look=impulso] .bottom-nav a[aria-current]{background:#ffe3a8;border-radius:10px;box-shadow:none}
+body[data-look=enfoque] .sticky-action .button{border-radius:24px;width:auto;margin-left:auto;padding-inline:20px}
+body[data-look=enfoque] .bottom-nav a[aria-current]{background:#3c3157;border-radius:10px;box-shadow:none}
+body[data-look=enfoque] .screen-content :is(.eyebrow,.list-row,.list-row small){color:#e0d6f3}
+</style></head><body data-screen="hoy" data-look="orden" class="screen-page "><a class="skip" href="#contenido">Ir al contenido</a><div class="review-layout"><aside class="review-rail"><a class="rail-brand" href="../index.html">Compass<span>ESTUDIO DE PANTALLAS</span></a><div><span class="eyebrow">02 · Hoy</span><h2>Tu día</h2><p>Diseño de alta fidelidad · 010</p><p class="review-note">Boceto visual con contenido de ejemplo. Los enlaces muestran otras pantallas; no crean cuentas ni guardan datos.</p><a class="rail-switch" href="../wireframes/hoy.html"><svg
   xmlns="http://www.w3.org/2000/svg"
   width="24"
   height="24"
@@ -107,21 +118,7 @@
   <line x1="10" x2="10" y1="11" y2="13" />
   <line x1="14" x2="14" y1="11" y2="13" />
 </svg>
-</div></div><header class="app-header"><a class="wordmark" href="hoy.html"><svg
-  xmlns="http://www.w3.org/2000/svg"
-  width="24"
-  height="24"
-  viewBox="0 0 24 24"
-  fill="none"
-  stroke="currentColor"
-  stroke-width="2"
-  stroke-linecap="round"
-  stroke-linejoin="round"
->
-  <path d="m16.24 7.76-1.804 5.411a2 2 0 0 1-1.265 1.265L7.76 16.24l1.804-5.411a2 2 0 0 1 1.265-1.265z" />
-  <circle cx="12" cy="12" r="10" />
-</svg>
-<span>compás</span></a><div class="header-actions"><a class="icon-button" href="buscar-tareas.html" aria-label="Buscar tareas"><svg
+</div></div><header class="app-header"><a class="wordmark" href="hoy.html"><span>Compass</span></a><div class="header-actions"><a class="icon-button" href="buscar-tareas.html" aria-label="Buscar tareas"><svg
   xmlns="http://www.w3.org/2000/svg"
   width="24"
   height="24"
@@ -149,21 +146,7 @@
   <path d="M10.268 21a2 2 0 0 0 3.464 0" />
   <path d="M3.262 15.326A1 1 0 0 0 4 17h16a1 1 0 0 0 .74-1.673C19.41 13.956 18 12.499 18 8A6 6 0 0 0 6 8c0 4.499-1.411 5.956-2.738 7.326" />
 </svg>
-</a><a class="avatar small" href="perfil.html" aria-label="Ver mi perfil">VS</a></div></header><main id="contenido" class="screen-content"><p class="eyebrow">MIÉRCOLES 4 DE NOVIEMBRE</p><h1>Hoy, a tu ritmo.</h1><div class="daily-hero"><div><span class="eyebrow">UN PASO A LA VEZ</span><h2>Lo importante<br>tiene su momento.</h2><p>Ya completaste 2 de tus 5 tareas.</p><div class="progress"><span style="width:40%"></span></div></div><span class="orbit" aria-hidden="true"><svg
-  xmlns="http://www.w3.org/2000/svg"
-  width="24"
-  height="24"
-  viewBox="0 0 24 24"
-  fill="none"
-  stroke="currentColor"
-  stroke-width="2"
-  stroke-linecap="round"
-  stroke-linejoin="round"
->
-  <path d="m16.24 7.76-1.804 5.411a2 2 0 0 1-1.265 1.265L7.76 16.24l1.804-5.411a2 2 0 0 1 1.265-1.265z" />
-  <circle cx="12" cy="12" r="10" />
-</svg>
-</span></div><a class="mood-strip" href="mood.html"><span class="mood-symbol"><svg
+</a><a class="avatar small" href="perfil.html" aria-label="Ver mi perfil">VS</a></div></header><main id="contenido" class="screen-content"><p class="eyebrow">MIÉRCOLES 4 DE NOVIEMBRE</p><h1>Tu día</h1><div class="hoy-options" role="group" aria-label="Propuestas visuales"><button type="button" data-option="orden" aria-pressed="true">Orden</button><button type="button" data-option="impulso" aria-pressed="false">Impulso</button><button type="button" data-option="enfoque" aria-pressed="false">Enfoque</button></div><section class="daily-hero"><div><p class="eyebrow">CIERRE DEL DÍA</p><h2><span data-pending>3</span> pendientes</h2><p data-progress-copy>2 de 5 completadas</p><div class="progress"><span data-progress-bar style="width:40%"></span></div><p class="deadline-copy">Lo pendiente al terminar el día cuenta como no cumplido.</p></div></section><a class="mood-strip" href="mood.html"><span class="mood-symbol"><svg
   xmlns="http://www.w3.org/2000/svg"
   width="24"
   height="24"
@@ -192,7 +175,7 @@
 >
   <path d="m9 18 6-6-6-6" />
 </svg>
-</a><div class="section-title"><h2>Tu día</h2><span>3 pendientes</span></div><a class="task " href="tarea-detalle.html"><span class="task-check"></span><div><strong>Preparar la entrega de UX</strong><p>18:00 · Facultad</p></div><svg
+</a><div class="section-title"><h2>Tareas</h2><span></span></div><a class="task " href="tarea-detalle.html"><span class="task-check"></span><div><strong>Preparar la entrega de UX</strong><p>Facultad</p></div><svg
   xmlns="http://www.w3.org/2000/svg"
   width="24"
   height="24"
@@ -205,7 +188,7 @@
 >
   <path d="m9 18 6-6-6-6" />
 </svg>
-</a><a class="task " href="tarea-detalle.html"><span class="task-check"></span><div><strong>Revisar el prototipo con el grupo</strong><p>19:30 · UX · Alto voltaje</p></div><svg
+</a><a class="task " href="tarea-detalle.html"><span class="task-check"></span><div><strong>Revisar el prototipo con el grupo</strong><p>UX · Alto voltaje</p></div><svg
   xmlns="http://www.w3.org/2000/svg"
   width="24"
   height="24"
@@ -218,7 +201,7 @@
 >
   <path d="m9 18 6-6-6-6" />
 </svg>
-</a><a class="task " href="tarea-detalle.html"><span class="task-check"></span><div><strong>Preparar la mochila</strong><p>21:00 · Personal</p></div><svg
+</a><a class="task " href="tarea-detalle.html"><span class="task-check"></span><div><strong>Preparar la mochila</strong><p>Personal</p></div><svg
   xmlns="http://www.w3.org/2000/svg"
   width="24"
   height="24"
@@ -244,7 +227,7 @@
 >
   <path d="M20 6 9 17l-5-5" />
 </svg>
-</span><div><strong>Leer el capítulo de Sistemas</strong><p>09:00 · Facultad</p></div><span class="tag success">Hecha</span></a><a class="task done" href="tarea-detalle.html"><span class="task-check"><svg
+</span><div><strong>Leer el capítulo de Sistemas</strong><p>Facultad</p></div><span class="tag success">Hecha</span></a><a class="task done" href="tarea-detalle.html"><span class="task-check"><svg
   xmlns="http://www.w3.org/2000/svg"
   width="24"
   height="24"
@@ -257,7 +240,7 @@
 >
   <path d="M20 6 9 17l-5-5" />
 </svg>
-</span><div><strong>Enviar la propuesta a Clara</strong><p>12:30 · Trabajo</p></div><span class="tag success">Hecha</span></a><a class="list-row" href="resumen-ayer.html"><span class="row-icon"><svg
+</span><div><strong>Enviar la propuesta a Clara</strong><p>Trabajo</p></div><span class="tag success">Hecha</span></a><a class="list-row" href="resumen-ayer.html"><span class="row-icon"><svg
   xmlns="http://www.w3.org/2000/svg"
   width="24"
   height="24"
@@ -278,7 +261,7 @@
   <path d="m6.34 17.66-1.41 1.41" />
   <path d="m19.07 4.93-1.41 1.41" />
 </svg>
-</span><span class="row-copy"><strong>Así te fue ayer</strong><small>Tu resumen está listo.</small></span><svg
+</span><span class="row-copy"><strong>Resumen de ayer</strong><small>Revisá tu cumplimiento</small></span><svg
   xmlns="http://www.w3.org/2000/svg"
   width="24"
   height="24"
@@ -389,4 +372,12 @@ Crear tarea</a></div><nav class="bottom-nav" aria-label="Principal"><a href="hoy
   <path d="M4 18v3" />
   <path d="M8 14v7" />
 </svg>
-<span>Progreso</span></a></nav></div><footer class="mobile-review"><a href="../index.html#grupo-2">Galería</a><span>Boceto 011</span><a href="../wireframes/hoy.html">Wireframe</a></footer></div></div><script src="../assets/theme.js"></script></body></html>
+<span>Progreso</span></a></nav></div><footer class="mobile-review"><a href="../index.html#grupo-2">Galería</a><span>Boceto 010</span><a href="../wireframes/hoy.html">Wireframe</a></footer></div></div><script src="../assets/theme.js"></script><script src="../assets/redesign.js"></script><script>
+const options = [...document.querySelectorAll('[data-option]')];
+for (const option of options) {
+  option.addEventListener('click', () => {
+    document.body.dataset.look = option.dataset.option;
+    for (const button of options) button.setAttribute('aria-pressed', String(button === option));
+  });
+}
+</script></body></html>

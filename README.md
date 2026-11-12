@@ -1,22 +1,22 @@
 <div align="center">
 
-# Compás
+# Compass
 
 ### Un ritmo propio.
 
 Diseño UX/UI de una aplicación mobile para organizar tareas, sostener compromisos y elegir cómo recibir acompañamiento.
 
-**130 pantallas y estados · 2 fidelidades · HTML, CSS y JavaScript · Recursos locales**
+**115 pantallas y estados · 2 fidelidades · HTML, CSS y JavaScript · Recursos locales**
 
 [Explorar la colección](index.html) · [Pantalla principal](pantallas/hoy.html) · [Ver wireframes](wireframes/hoy.html)
 
 </div>
 
-![Vista general de la colección de Compás: presentación y pantalla principal de la aplicación](docs/images/coleccion.png)
+![Vista general de la colección de Compass: presentación y pantalla principal de la aplicación](docs/images/coleccion.png)
 
 ## El proyecto
 
-Compás propone una organización que contempla el contexto: días con poca energía, imprevistos, tareas compartidas y cambios de planes. La persona puede elegir entre usar solo la agenda o sumar avisos de presión, bloqueo de redes sociales y gamificación.
+Compass propone una organización que contempla el contexto: días con poca energía, imprevistos, tareas compartidas y cambios de planes. La persona puede elegir entre usar solo la agenda o sumar avisos de presión, bloqueo de redes sociales y gamificación.
 
 La interfaz busca transmitir claridad y autonomía. El acompañamiento es opcional; las reglas, los cupos disponibles y los efectos de cada decisión se muestran antes de confirmar.
 
@@ -54,7 +54,7 @@ Cada pantalla tiene una versión de **alta fidelidad** y un **wireframe estructu
 
 ### Alcance de los bocetos
 
-Los archivos representan el diseño de la aplicación. Los enlaces permiten recorrer pantallas prediseñadas; **no ejecutan operaciones reales**. Los formularios muestran datos de ejemplo y no guardan cambios.
+Los archivos representan el diseño de la aplicación. Los enlaces permiten recorrer pantallas prediseñadas; **no ejecutan operaciones reales**. Los flujos rediseñados de tareas, estado de ánimo y edición de proyectos conservan cambios locales en el navegador.
 
 No hay backend, autenticación, grabación de audio, reconocimiento de imágenes, acceso a contactos, envío de notificaciones ni bloqueo efectivo de aplicaciones. El buscador de la galería únicamente filtra los archivos de la colección. No se usan analíticas ni servicios externos durante la consulta.
 
@@ -116,8 +116,8 @@ Estas comprobaciones **no equivalen a una certificación integral de accesibilid
 ```text
 UX-UI/
 ├── index.html              # Galería y búsqueda de pantallas
-├── pantallas/              # 130 diseños de alta fidelidad
-├── wireframes/             # 130 versiones estructurales en grises
+├── pantallas/              # 115 diseños de alta fidelidad
+├── wireframes/             # 115 versiones estructurales en grises
 ├── assets/
 │   ├── app.css             # Tokens y componentes compartidos
 │   ├── wireframe.css       # Adaptación visual de baja fidelidad
@@ -151,7 +151,7 @@ El generador usa únicamente la biblioteca estándar de Python. Sobrescribe `ind
 
 ## Referencias y recursos
 
-Como referencias de producto se consultaron [Things](https://culturedcode.com/things/), [Structured](https://structured.app/), [Todoist](https://www.todoist.com/) y [Opal](https://opalapp.com/). La identidad visual y las pantallas de Compás son una propuesta propia.
+Como referencias de producto se consultaron [Things](https://culturedcode.com/things/), [Structured](https://structured.app/), [Todoist](https://www.todoist.com/) y [Opal](https://opalapp.com/). La identidad visual y las pantallas de Compass son una propuesta propia.
 
 - [WCAG 2.2 — W3C](https://www.w3.org/TR/WCAG22/).
 - [Manrope — SIL Open Font License](assets/fonts/Manrope-OFL.txt).

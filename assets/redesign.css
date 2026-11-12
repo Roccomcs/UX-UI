@@ -1,0 +1,102 @@
+/* Compass uses a strict hierarchy: neutral content, red for urgency, green for completion. */
+:root {
+  --compass-alert: #a8263c;
+  --compass-alert-bg: #fbe9eb;
+  --compass-panel: #e9edf2;
+  --compass-grid: #33415518;
+}
+:root[data-theme="dark"] {
+  --compass-alert: #ff9ca9;
+  --compass-alert-bg: #45242d;
+  --compass-panel: #263344;
+  --compass-grid: #b5c7e326;
+}
+.screen-page .phone { border-radius: 22px; }
+.screen-page .screen-content h1 {
+  font-size: clamp(1.95rem, 8vw, 2.55rem);
+  font-weight: 850;
+  line-height: 1.04;
+  letter-spacing: -.057em;
+  margin-bottom: 22px;
+}
+.screen-page .app-header { border-bottom: 1px solid var(--color-line); }
+.screen-page .wordmark { letter-spacing: -.07em; font-weight: 850; }
+.screen-page .button,
+.screen-page .field input,
+.screen-page .field select { border-radius: 7px; }
+.screen-page .list-row { border-radius: 6px; }
+.screen-page .section-title h2 { letter-spacing: -.035em; }
+.screen-page .daily-hero {
+  min-height: auto;
+  border-radius: 8px;
+  border: 1px solid var(--color-line);
+  border-left: 5px solid var(--compass-alert);
+  background-color: var(--compass-panel);
+  background-image: linear-gradient(90deg, var(--compass-grid) 1px, transparent 1px);
+  background-size: 24px 100%;
+}
+.screen-page .daily-hero h2 { font-size: 2.15rem; line-height: 1; letter-spacing: -.055em; }
+.screen-page .daily-hero .eyebrow,
+.screen-page .deadline-copy { color: var(--compass-alert); font-weight: 750; }
+.screen-page .deadline-copy { margin: 14px 0 0; }
+.screen-page .mood-strip { border: 1px solid var(--color-line); border-radius: 8px; }
+.screen-page .notice.warning,
+.screen-page .task-status { color: var(--compass-alert); background: var(--compass-alert-bg); }
+.screen-page .task-status { font-size: .95rem; padding: 5px 12px; }
+.screen-page .task-status.success { color: var(--color-success); background: var(--color-success-background); }
+.record-heading { display: flex; align-items: flex-start; justify-content: space-between; gap: 8px; }
+.record-heading h2 { min-width: 0; font-size: 1.5rem; overflow-wrap: anywhere; }
+.record-actions { display: flex; flex: none; }
+.record-actions button { font: inherit; border: 0; background: transparent; cursor: pointer; }
+.delete-action:hover, .delete-action:focus-visible { color: var(--compass-alert); background: var(--compass-alert-bg); }
+.detail-actions { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-top: 24px; }
+.detail-actions .button { margin: 0; padding: 10px 8px; }
+.detail-actions .icon { width: 18px; height: 18px; }
+.entry-tabs {
+  display: grid; grid-template-columns: repeat(3, 1fr); gap: 4px;
+  padding: 4px; border: 1px solid var(--color-line); border-radius: 8px;
+  background: var(--compass-panel); margin-bottom: 22px;
+}
+.entry-tabs a { display: grid; place-items: center; min-height: 44px; text-decoration: none; font-weight: 700; }
+.entry-tabs a[aria-current] { background: var(--color-primary); color: var(--color-on-primary); border-radius: 5px; }
+.selection { border: 0; padding: 0; margin: 0 0 18px; }
+.selection legend { font-weight: 750; margin-bottom: 8px; }
+.selection label { display: flex; gap: 12px; align-items: center; min-height: 48px; padding: 12px; border: 1px solid var(--color-line); border-radius: 8px; margin-bottom: 8px; cursor: pointer; }
+.selection label:has(:checked) { border-color: var(--color-primary); background: var(--compass-panel); }
+.selection input { flex: none; accent-color: var(--color-primary); }
+.selection small { display: block; }
+.screen-page .choice-mark { display: grid; place-items: center; flex-shrink: 0; }
+.screen-page .choice-mark svg { display: block; width: 13px; height: 13px; margin: 0; }
+.screen-page .appearance .theme-controls { position: static; width: max-content; margin: 10px 0 24px; box-shadow: none; }
+.inline-feedback { margin: 0 0 18px; border-left: 4px solid var(--color-success); padding: 12px; font-weight: 700; color: var(--color-success); background: var(--color-success-background); }
+.task-list-item { display: flex; align-items: center; gap: 10px; }
+.task-list-item .task { flex: 1; min-width: 0; }
+.task-list-item button.task-check { display: grid; place-items: center; cursor: pointer; width: 44px; height: 44px; flex: none; background: var(--color-surface); color: var(--color-success); }
+.task-list-item.done button { background: var(--color-success-background); }
+.task-list-item.missed button { opacity: .5; cursor: default; }
+.delete-dialog { color: var(--color-ink); background: var(--color-surface); border: 1px solid var(--color-line); border-radius: 12px; width: min(320px, calc(100% - 32px)); padding: 20px; }
+.delete-dialog::backdrop { background: #1017239c; }
+.delete-dialog h2 { margin-bottom: 16px; }
+.delete-dialog .button { width: 100%; }
+.field select { width: 100%; min-height: 44px; color: var(--color-ink); background: var(--color-surface); border: 1px solid var(--color-control); padding: 8px; }
+[data-group-field][hidden] { display: none; }
+.wireframe .daily-hero { background-image: none; border-left-color: currentColor; }
+.screen-page .daily-hero { padding: 16px 18px; margin-bottom: 16px; }
+.screen-page .daily-hero .eyebrow { margin: 0 0 9px; }
+.screen-page .daily-hero h2 { margin-bottom: 6px; }
+.screen-page .daily-hero [data-progress-copy] { margin: 0 0 10px; }
+.screen-page .daily-hero .deadline-copy { margin-top: 8px; font-size: .82rem; }
+.screen-page .task-list-item { border-bottom: 1px solid var(--color-line); }
+.screen-page .task-list-item .task { border: 0; }
+.screen-page .task-list-item .task-check { border-radius: 7px; }
+.screen-page .task-list-item .task-check .icon { width: 20px; height: 20px; }
+.screen-page .bottom-stack .detail-actions { background: var(--color-surface); border-top: 1px solid var(--color-line); padding: 12px 16px; margin: 0; }
+.screen-page .project-cover, .screen-page .summary-hero, .screen-page .block-hero, .screen-page .streak-hero {
+  border-radius: 8px;
+  border: 1px solid var(--color-line);
+  box-shadow: inset 4px 0 var(--color-primary);
+}
+.screen-page .block-hero { box-shadow: inset 4px 0 var(--compass-alert); }
+.screen-page .project-cover .progress, .screen-page .summary-hero .progress, .screen-page .daily-hero .progress { height: 5px; }
+.screen-page .app-header .icon-button:hover { background: var(--compass-panel); }
+.screen-page .app-header .delete-action:hover, .screen-page .delete-action:hover { color: var(--compass-alert); background: var(--compass-alert-bg); }

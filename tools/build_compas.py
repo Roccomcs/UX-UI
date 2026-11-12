@@ -32,7 +32,7 @@ def choice(title,sub='',selected=False,ico='circle-check'):
 def section(title,right=''):
     return f'<div class="section-title"><h2>{E(title)}</h2><span>{E(right)}</span></div>'
 def task(title='Preparar la entrega de UX',time='18:00',project='Facultad',state='',to='tarea-detalle',sub=''):
-    return f'<a class="task {state}" href="{to}.html"><span class="task-check">{icon("check") if state=="done" else ""}</span><div><strong>{E(title)}</strong><p>{E(sub or time+" · "+project)}</p></div>'+ (tag('Hecha','success') if state=='done' else icon('chevron-right'))+'</a>'
+    return f'<a class="task {state}" href="{to}.html"><span class="task-check">{icon("check") if state=="done" else ""}</span><div><strong>{E(title)}</strong><p>{E(sub or project)}</p></div>'+ (tag('Hecha','success') if state=='done' else icon('chevron-right'))+'</a>'
 def tasks():
     return task()+task('Revisar el prototipo con el grupo','19:30','UX · Alto voltaje')+task('Preparar la mochila','21:00','Personal')+section('Ya avanzaste','2 hechas')+task('Leer el capítulo de Sistemas','09:00','Facultad','done')+task('Enviar la propuesta a Clara','12:30','Trabajo','done')
 def art(kind='compass'):
@@ -70,12 +70,12 @@ def add(slug,title,group,body,nav='Hoy',subtitle='',cta=None,back='hoy',mode='no
 
 # Access and first use
 add('bienvenida','Hacé espacio para lo que importa.','01 · Primeros pasos',
-    '<div class="brand-large">'+icon('compass')+'<span>compás</span></div>'+art()+ '<p class="welcome-copy">Organizá tu día. Sostené lo que elegiste.<br>El ritmo lo marcás vos.</p>'+btn('Empezar','registro',ico='arrow-right')+btn('Ya tengo cuenta','iniciar-sesion','secondary')+'<p class="footnote">Tu agenda, con un poco de compañía.</p>',nav=None,mode='welcome',back=None,refs='1')
+    '<div class="brand-large">'+'<span>Compass</span></div>'+art()+ '<p class="welcome-copy">Organizá tu día. Sostené lo que elegiste.<br>El ritmo lo marcás vos.</p>'+btn('Empezar','registro',ico='arrow-right')+btn('Ya tengo cuenta','iniciar-sesion','secondary')+'<p class="footnote">Tu agenda, con un poco de compañía.</p>',nav=None,mode='welcome',back=None,refs='1')
 add('registro','Tu próximo paso empieza acá.','01 · Primeros pasos',field('Nombre','Valentina')+field('Correo electrónico','vale.suarez@ejemplo.com','email')+field('Contraseña','compas-ejemplo','password',hint='Al menos 8 caracteres. Podés pegarla desde tu gestor.')+note('Tu cuenta es personal','La necesitás para acceder a tu planificación. Las consecuencias son opcionales.')+btn('Crear cuenta','onboarding-acompanamiento')+'<p class="footnote">¿Ya tenés cuenta? <a href="iniciar-sesion.html">Iniciá sesión</a></p>',nav=None,back='bienvenida',refs='1')
 add('iniciar-sesion','Qué bueno verte.','01 · Primeros pasos',field('Correo electrónico','vale.suarez@ejemplo.com','email')+field('Contraseña','compas-ejemplo','password')+btn('Iniciar sesión','hoy')+btn('Olvidé mi contraseña','recuperar-clave','text')+btn('Crear una cuenta','registro','secondary'),nav=None,back='bienvenida',refs='1')
 add('recuperar-clave','Volvamos a encontrarte.','01 · Primeros pasos','<p>Te enviaremos un enlace para elegir una contraseña nueva.</p>'+field('Correo electrónico','vale.suarez@ejemplo.com','email')+btn('Enviar enlace','recuperacion-enviada'),nav=None,back='iniciar-sesion')
 add('recuperacion-enviada','Revisá tu correo.','01 · Primeros pasos',art('mail')+note('El enlace está en camino','Lo enviamos a vale.suarez@ejemplo.com. Si no lo encontrás, revisá correo no deseado.','success','mail')+btn('Volver al inicio de sesión','iniciar-sesion')+btn('Corregir mi correo','recuperar-clave','secondary'),nav=None,back='recuperar-clave')
-add('onboarding-acompanamiento','Una ayuda a tu medida.','01 · Primeros pasos',steps(1)+art()+ '<p>No todos los días piden lo mismo. Compás te ayuda a organizarte y a sostener tus decisiones, sin perder el control.</p>'+note('Vos elegís cómo','Podés usar la app sin consecuencias y cambiar de opinión cuando quieras.')+btn('Elegir mi acompañamiento','onboarding-consecuencias'),nav=None,back='registro',refs='3,15')
+add('onboarding-acompanamiento','Una ayuda a tu medida.','01 · Primeros pasos',steps(1)+art()+ '<p>No todos los días piden lo mismo. Compass te ayuda a organizarte y a sostener tus decisiones, sin perder el control.</p>'+note('Vos elegís cómo','Podés usar la app sin consecuencias y cambiar de opinión cuando quieras.')+btn('Elegir mi acompañamiento','onboarding-consecuencias'),nav=None,back='registro',refs='3,15')
 MODES=choice('Solo organización','Tareas, agenda y seguimiento. Sin consecuencias.',True,'calendar-days')+choice('Con avisos de presión','Mensajes más insistentes, si vos los activás.',False,'bell')+choice('Con bloqueo de redes','Elegís las redes y cuánto dura el bloqueo.',False,'shield')+choice('Con gamificación','Puntos, niveles y rachas para motivarte.',False,'trophy')
 add('onboarding-consecuencias','¿Qué te ayuda a seguir?','01 · Primeros pasos',steps(2)+MODES+note('Podés combinar opciones','Los avisos, el bloqueo y la gamificación se activan por separado en Ajustes.')+btn('Continuar sin consecuencias','onboarding-horario'),nav=None,back='onboarding-acompanamiento',refs='15')
 add('onboarding-horario','Un cierre, un nuevo comienzo.','01 · Primeros pasos',steps(3)+'<div class="time-hero">'+icon('sun')+'<strong>08:00</strong><span>Todos los días</span></div>'+field('Hora de evaluación y resumen','08:00','time')+note('Miramos el día anterior','A esta hora evaluamos el cumplimiento y te mostramos el resumen de ayer. Podés cambiarla en Ajustes.')+btn('Guardar horario','onboarding-permisos'),nav=None,back='onboarding-consecuencias',refs='3,13b,17')
@@ -83,7 +83,7 @@ add('onboarding-permisos','Primero, tu permiso.','01 · Primeros pasos',steps(4)
 add('onboarding-listo','Encontrá tu propio ritmo.','01 · Primeros pasos',steps(5)+art()+ '<p>Tu cuenta ya está lista. Empezá con algo posible: una tarea y un momento para hacerla.</p>'+note('Tu configuración inicial','Solo organización · Resumen a las 08:00. Podés cambiarlo cuando quieras.','success','check')+btn('Planificar mi primer día','hoy-vacio'),nav=None,back='onboarding-permisos')
 
 # Today
-HERO='<div class="daily-hero"><div><span class="eyebrow">UN PASO A LA VEZ</span><h2>Lo importante<br>tiene su momento.</h2><p>Ya completaste 2 de tus 5 tareas.</p><div class="progress"><span style="width:40%"></span></div></div><span class="orbit" aria-hidden="true">'+icon('compass')+'</span></div>'
+HERO='<div class="daily-hero"><div><span class="eyebrow">UN PASO A LA VEZ</span><h2>Lo importante<br>tiene su momento.</h2><p>Ya completaste 2 de tus 5 tareas.</p><div class="progress"><span style="width:40%"></span></div></div><span class="orbit" aria-hidden="true">'+'</span></div>'
 MOOD='<a class="mood-strip" href="mood.html"><span class="mood-symbol">'+icon('smile')+'</span><div><strong>¿Cómo venís hoy?</strong><small>Tu energía también cuenta.</small></div>'+icon('chevron-right')+'</a>'
 add('hoy','Hoy, a tu ritmo.','02 · Hoy',HERO+MOOD+section('Tu día','3 pendientes')+tasks()+row('Así te fue ayer','Tu resumen está listo.','sun','resumen-ayer'),subtitle='MIÉRCOLES 4 DE NOVIEMBRE',cta=('Crear tarea','tarea-crear'),back=None,refs='4,9,12,13b,14')
 add('hoy-vacio','Un día con espacio.','02 · Hoy',MOOD+empty('Empecemos por una cosa.','Elegí algo que quieras hacer hoy y reservále un momento.','tarea-crear'),subtitle='MIÉRCOLES 4 DE NOVIEMBRE',back=None)
@@ -157,7 +157,7 @@ add('grupos','Lo compartido también cuenta.','09 · Grupos',pills(['Mis grupos'
 add('grupo-detalle','Alto voltaje.','09 · Grupos','<div class="avatar-stack"><span>VS</span><span>BM</span><span>CL</span><span>IG</span></div><p>4 integrantes · Todos tienen los mismos permisos.</p>'+row('Ver integrantes','Valentina, Bruno, Camila e Ian','users','grupo-integrantes')+row('Prototipo compartido','Proyecto · Revisión hoy a las 19:30','folders','proyecto-compartido')+task('Revisar el prototipo con el grupo','19:30','Alto voltaje',sub='Valentina y Camila · Responsables')+row('Racha del grupo','Ayer se cortó · Hoy volvemos a empezar.','flame','racha-grupo')+row('Invitar a alguien','Compartí un enlace de invitación.','plus','grupo-invitar')+row('Salir del grupo','Confirmá antes de salir.','log-out','grupo-salir'),nav='Grupos',back='grupos',refs='20,21,22')
 add('grupo-integrantes','Un equipo, los mismos permisos.','09 · Grupos',person('Valentina Suárez','Vos · Puede crear y editar','VS','perfil')+person('Bruno Méndez','Puede crear y editar','BM')+person('Camila López','Puede crear y editar','CL')+person('Ian García','Puede crear y editar','IG')+note('Sin roles de administración','Todos pueden crear, editar, marcar, reprogramar y avisar imprevistos en las tareas del grupo.'),nav='Grupos',back='grupo-detalle',cta=('Invitar integrante','grupo-invitar'),refs='20')
 add('grupo-crear','Armemos un equipo.','09 · Grupos',field('Nombre del grupo','Final de Sistemas')+field('Descripción (opcional)','Estudiar y preparar el final juntos.')+note('Las mismas posibilidades para todos','Todos los integrantes tienen los mismos permisos sobre tareas y proyectos del grupo.')+btn('Crear grupo','grupo-invitar'),nav='Grupos',back='grupos',refs='20')
-add('grupo-invitar','Una invitación para avanzar.','09 · Grupos',icon('mail')+'<p>Invitá a personas que ya usan Compás o compartí el enlace de tu grupo.</p>'+field('Enlace de invitación','compas.ejemplo/g/alto-voltaje')+note('Enlace de demostración','Este boceto no envía invitaciones ni copia información al portapapeles.')+row('Buscar personas','Por nombre o correo','search','amigos-buscar')+btn('Ver invitación recibida','grupo-aceptar'),nav='Grupos',back='grupo-detalle',refs='21')
+add('grupo-invitar','Una invitación para avanzar.','09 · Grupos',icon('mail')+'<p>Invitá a personas que ya usan Compass o compartí el enlace de tu grupo.</p>'+field('Enlace de invitación','compas.ejemplo/g/alto-voltaje')+note('Enlace de demostración','Este boceto no envía invitaciones ni copia información al portapapeles.')+row('Buscar personas','Por nombre o correo','search','amigos-buscar')+btn('Ver invitación recibida','grupo-aceptar'),nav='Grupos',back='grupo-detalle',refs='21')
 add('grupo-aceptar','Tenés un lugar en el equipo.','09 · Grupos','<div class="invitation">'+icon('users')+'<span>INVITACIÓN DE CAMILA</span><h2>Final de Sistemas</h2><p>Camila e Ian ya están organizándose.</p></div>'+note('Antes de sumarte','Vas a ver las tareas y sus motivos. Las consecuencias individuales solo alcanzan a quienes son responsables, según su configuración.')+btn('Aceptar invitación','grupo-detalle')+btn('Ahora no','grupos','secondary'),nav='Grupos',back='grupos',refs='21,22')
 add('grupo-responsables','¿Quiénes se hacen cargo?','09 · Grupos','<p>Revisar el prototipo con el grupo</p>'+choice('Valentina Suárez','Vos',True,'user-round')+choice('Camila López','Integrante del grupo',True,'user-round')+choice('Bruno Méndez','Integrante del grupo',False,'user-round')+choice('Ian García','Integrante del grupo',False,'user-round')+note('Puede haber más de un responsable','Si no se cumple, las consecuencias alcanzan a todos sus responsables y se corta la racha del grupo.','warning','users')+btn('Guardar 2 responsables','proyecto-compartido'),nav='Grupos',back='proyecto-compartido',refs='22')
 add('grupo-salir','Revisemos antes de salir.','09 · Grupos',sheet('¿Salir de Alto voltaje?','Dejarías de ver sus proyectos y tareas.',note('Tenés una tarea a tu cargo','Reasigná la revisión del prototipo con el equipo antes de confirmar la salida.','warning','users'),'Revisar responsables','grupo-responsables')+btn('Confirmar salida del grupo','grupos','danger'),nav='Grupos',mode='sheet',back='grupo-detalle',refs='21')
@@ -193,13 +193,13 @@ add('consecuencias-desactivar','Podés cambiar de idea.','12 · Consecuencias',s
 # Profile, settings, help, permissions
 add('perfil','Tu espacio.','13 · Perfil y ajustes','<div class="profile-hero"><span class="avatar large">VS</span><h2>Valentina Suárez</h2><p>vale.suarez@ejemplo.com</p></div>'+row('Editar mi perfil','Nombre y foto','pencil','perfil-editar')+row('Configuración','Acompañamiento, horarios y permisos','settings','ajustes')+row('Mi progreso','Una mirada a lo que venís haciendo','chart-no-axes-combined','progreso')+row('Ayuda','Reglas claras y respuestas a mano','circle-help','ayuda'),back='hoy',refs='2')
 add('perfil-editar','Que se sienta tuyo.','13 · Perfil y ajustes','<div class="profile-hero"><span class="avatar large">VS</span></div>'+btn('Cambiar foto','permiso-camara','secondary','camera')+field('Nombre','Valentina Suárez')+field('Correo electrónico','vale.suarez@ejemplo.com','email',hint='El correo se muestra como referencia de tu cuenta.')+btn('Guardar perfil','cambios-guardados'),back='perfil',refs='2')
-add('ajustes','A tu manera.','13 · Perfil y ajustes',section('Tu acompañamiento')+row('Consecuencias','Solo organización','shield','consecuencias')+row('Horario del resumen','Todos los días · 08:00','clock','ajustes-horario')+row('Cupos y límites','Imprevistos, pausas y reprogramaciones','flag','ajustes-cupos')+section('Tu celular')+row('Notificaciones','Recordatorios y avisos de presión','bell','ajustes-notificaciones')+row('Permisos','Cámara, micrófono y contactos','lock','ajustes-permisos')+row('Ayuda','Cómo funciona Compás','circle-help','ayuda'),back='perfil',refs='3')
+add('ajustes','A tu manera.','13 · Perfil y ajustes',section('Tu acompañamiento')+row('Consecuencias','Solo organización','shield','consecuencias')+row('Horario del resumen','Todos los días · 08:00','clock','ajustes-horario')+row('Cupos y límites','Imprevistos, pausas y reprogramaciones','flag','ajustes-cupos')+section('Tu celular')+row('Notificaciones','Recordatorios y avisos de presión','bell','ajustes-notificaciones')+row('Permisos','Cámara, micrófono y contactos','lock','ajustes-permisos')+row('Ayuda','Cómo funciona Compass','circle-help','ayuda'),back='perfil',refs='3')
 add('ajustes-horario','Cada mañana, con perspectiva.','13 · Perfil y ajustes',field('Hora de evaluación y resumen','08:00','time')+note('Un solo horario para las dos cosas','Todos los días evaluamos el cumplimiento de ayer y mostramos el resumen a esta hora.')+btn('Guardar horario','cambios-guardados'),back='ajustes',refs='3,13b,17')
 add('ajustes-cupos','Los límites, a la vista.','13 · Perfil y ajustes',field('Imprevistos por semana','2','number',hint='Disponible antes del vencimiento. No suma al castigo y corta la racha.')+field('Pausas por semana','2','number',hint='Cada vez que pausás elegís la duración.')+field('Reprogramaciones por tarea','2','number',hint='Cantidad máxima de cambios de fecha de cada tarea.')+note('Los cupos semanales se renuevan el lunes','En este escenario tenés 2 imprevistos y 2 pausas disponibles.')+btn('Guardar límites','cambios-guardados'),back='ajustes',refs='3')
 add('ajustes-notificaciones','Avisos que te sirvan.','13 · Perfil y ajustes',choice('Recordatorios','Te avisan que se acerca una tarea.',True,'bell')+choice('Resumen de ayer','Cada mañana a las 08:00.',True,'sun')+choice('Consejos','Sugerencias para ordenar tu día.',True,'circle-help')+choice('Avisos de presión','Solo si los activás. Ahora están desactivados.',False,'flag')+note('Respetamos el silencio del celular','Con poca energía, los avisos de presión son menos frecuentes y más amables.')+btn('Guardar notificaciones','cambios-guardados'),back='ajustes',refs='19')
 add('ajustes-permisos','Tu permiso, en cada paso.','13 · Perfil y ajustes',row('Notificaciones','Permitidas','bell','permiso-notificaciones')+row('Bloqueo de redes','No habilitado','shield','permiso-bloqueo')+row('Micrófono','Se pide al grabar una tarea.','mic','permiso-microfono')+row('Cámara','Se pide al sacar una foto.','camera','permiso-camara')+row('Contactos','Se pide al buscar por contactos.','contact','permiso-contactos')+note('Siempre hay otra manera','Podés escribir tareas y buscar personas por nombre.'),back='ajustes',refs='1b')
 for slug,title,why,ico,success,back in [
-    ('notificaciones','Recibí los avisos que elegiste.','Compás necesita permiso para mostrar recordatorios y tu resumen diario.','bell','ajustes-notificaciones','onboarding-permisos'),
+    ('notificaciones','Recibí los avisos que elegiste.','Compass necesita permiso para mostrar recordatorios y tu resumen diario.','bell','ajustes-notificaciones','onboarding-permisos'),
     ('bloqueo','Solo las redes que elegiste.','Este permiso permite aplicar el bloqueo elegido a Instagram y TikTok. Sin él, podés seguir usando la agenda.','shield','consecuencias','consecuencias-redes'),
     ('microfono','¿Podemos usar el micrófono?','Se usa mientras grabás una tarea. El audio se convierte en texto que vas a revisar.','mic','audio-grabando','tarea-audio'),
     ('camara','¿Podemos usar la cámara?','Se usa para fotografiar una nota o cambiar tu foto de perfil.','camera','foto-revision','tarea-foto'),
@@ -216,7 +216,7 @@ for slug,title,text,ico,to,meta in [
     ('consejo','Podés hacer un poco de espacio.','Hoy tenés pocas pilas. Mañana hay más margen para la entrega y la revisión grupal. Mirá la propuesta antes de decidir.','circle-help','reorganizar-sugerencia','Consejo · 17:35'),
     ('resumen','Ayer también avanzaste.','Completaste 4 de 5 tareas. Hubo un imprevisto que no sumó al castigo. Tu resumen ya está listo.','sun','resumen-ayer','Resumen · 08:00'),
     ('amable','Hoy, de a un paso.','Sabemos que venís con pocas pilas. ¿Te sirve revisar qué es posible hacer y mover lo demás?','moon','reorganizar-sugerencia','Ejemplo · Pocas pilas · Presión activada')]:
-    add('notificacion-'+slug,'Un aviso con contexto.','15 · Notificaciones','<div class="push-preview"><div class="push-brand">'+icon('compass')+'<strong>compás</strong><span>ahora</span></div><h2>'+E(title)+'</h2><p>'+E(text)+'</p></div>'+tag(meta)+note('Bajo tu control','Los horarios de silencio son los de tu celular. Podés cambiar qué avisos recibís en Configuración.')+btn('Ver el contexto',to),back='notificaciones',refs='19')
+    add('notificacion-'+slug,'Un aviso con contexto.','15 · Notificaciones','<div class="push-preview"><div class="push-brand">'+'<strong>Compass</strong><span>ahora</span></div><h2>'+E(title)+'</h2><p>'+E(text)+'</p></div>'+tag(meta)+note('Bajo tu control','Los horarios de silencio son los de tu celular. Podés cambiar qué avisos recibís en Configuración.')+btn('Ver el contexto',to),back='notificaciones',refs='19')
 for slug,title,text,ico,to in [
     ('proyectos-vacio','Las ideas necesitan un lugar.','Agrupá tareas relacionadas para ver qué sigue en cada proyecto.','folders','proyecto-crear'),
     ('grupos-vacio','Un espacio para hacer en equipo.','Creá un grupo o aceptá una invitación para empezar a compartir proyectos.','users','grupo-crear'),
@@ -272,15 +272,19 @@ def theme_controls():
 
 def render(p,index,wire=False):
     slug=p['slug']; other='pantallas' if wire else 'wireframes'
-    rail=f'''<aside class="review-rail"><a class="rail-brand" href="../index.html">{icon('compass')} compás<span>ESTUDIO DE PANTALLAS</span></a><div><span class="eyebrow">{E(p['group'])}</span><h2>{E(p['title'])}</h2><p>{'Wireframe estructural' if wire else 'Diseño de alta fidelidad'} · {index:03d}</p><p class="review-note">Boceto visual con contenido de ejemplo. Los enlaces muestran otras pantallas; no crean cuentas ni guardan datos.</p><a class="rail-switch" href="../{other}/{slug}.html">{icon('layers') if (ASSET/'icons/layers.svg').exists() else icon('file-text')} Ver {'diseño visual' if wire else 'wireframe'} {icon('arrow-right')}</a></div><a class="back-gallery" href="../index.html#grupo-{int(p['group'][:2])}">{icon('arrow-left')} Todas las pantallas</a></aside>'''
+    rail=f'''<aside class="review-rail"><a class="rail-brand" href="../index.html">Compass<span>ESTUDIO DE PANTALLAS</span></a><div><span class="eyebrow">{E(p['group'])}</span><h2>{E(p['title'])}</h2><p>{'Wireframe estructural' if wire else 'Diseño de alta fidelidad'} · {index:03d}</p><p class="review-note">Boceto visual con contenido de ejemplo. Los enlaces muestran otras pantallas; no crean cuentas ni guardan datos.</p><a class="rail-switch" href="../{other}/{slug}.html">{icon('layers') if (ASSET/'icons/layers.svg').exists() else icon('file-text')} Ver {'diseño visual' if wire else 'wireframe'} {icon('arrow-right')}</a></div><a class="back-gallery" href="../index.html#grupo-{int(p['group'][:2])}">{icon('arrow-left')} Todas las pantallas</a></aside>'''
     status='<div class="status-bar" aria-hidden="true"><strong>9:41</strong><div>'+icon('signal')+icon('wifi')+icon('battery-full')+'</div></div>'
-    top='<header class="app-header">'+(f'<a class="icon-button" href="{p["back"]}.html" aria-label="Volver">{icon("arrow-left")}</a>' if p['back'] else '<a class="wordmark" href="hoy.html">'+icon('compass')+'<span>compás</span></a>')+'<div class="header-actions"><a class="icon-button" href="buscar-tareas.html" aria-label="Buscar tareas">'+icon('search')+'</a><a class="icon-button" href="notificaciones.html" aria-label="Notificaciones">'+icon('bell')+'</a><a class="avatar small" href="perfil.html" aria-label="Ver mi perfil">VS</a></div></header>'
-    if p['nav'] is None:top='<header class="app-header">'+(f'<a class="icon-button" href="{p["back"]}.html" aria-label="Volver">{icon("arrow-left")}</a>' if p['back'] else '<span></span>')+'<span class="mini-brand">compás</span></header>'
+    top='<header class="app-header">'+(f'<a class="icon-button" href="{p["back"]}.html" aria-label="Volver">{icon("arrow-left")}</a>' if p['back'] else '<a class="wordmark" href="hoy.html">'+'<span>Compass</span></a>')+'<div class="header-actions"><a class="icon-button" href="buscar-tareas.html" aria-label="Buscar tareas">'+icon('search')+'</a><a class="icon-button" href="notificaciones.html" aria-label="Notificaciones">'+icon('bell')+'</a><a class="avatar small" href="perfil.html" aria-label="Ver mi perfil">VS</a></div></header>'
+    if p['nav'] is None:top='<header class="app-header">'+(f'<a class="icon-button" href="{p["back"]}.html" aria-label="Volver">{icon("arrow-left")}</a>' if p['back'] else '<span></span>')+'<span class="mini-brand">Compass</span></header>'
     title=(f'<p class="eyebrow">{E(p["subtitle"])}</p>' if p['subtitle'] else '')+f'<h1>{E(p["title"])}</h1>'
     if p['mode']=='sheet': title=f'<h1 class="sr-only">{E(p["title"])}</h1>'
     if p['mode']=='welcome': title=f'<h1>{E(p["title"])}</h1>'
+    body=p['body']
     foot=(f'<div class="sticky-action">{btn(p["cta"][0],p["cta"][1],ico="plus")}</div>' if p['cta'] else '')
-    return f'''<!doctype html><html lang="es-AR"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="color-scheme" content="light dark"><title>{E(p['title'])} — Compás · {'Wireframe' if wire else 'Diseño'}</title><link rel="stylesheet" href="../assets/app.css">{'<link rel="stylesheet" href="../assets/wireframe.css">' if wire else ''}</head><body class="screen-page {'wireframe' if wire else ''}">{theme_controls()}<a class="skip" href="#contenido">Ir al contenido</a><div class="review-layout">{rail}<div class="phone {p['mode'] if p['mode'] != 'sheet' else 'has-sheet'}">{status}{top}<main id="contenido" class="screen-content">{title}{p['body']}</main><div class="bottom-stack">{foot}{navigation(p['nav']) if p['nav'] else '<div class="home-indicator" aria-hidden="true"></div>'}</div><footer class="mobile-review"><a href="../index.html#grupo-{int(p['group'][:2])}">Galería</a><span>Boceto {index:03d}</span><a href="../{other}/{slug}.html">{'Diseño' if wire else 'Wireframe'}</a></footer></div></div><script src="../assets/theme.js"></script></body></html>'''
+    if slug=='tarea-detalle':
+        body, detail_footer=body.split('<div class="detail-actions">',1)
+        foot='<div class="detail-actions">'+detail_footer
+    return f'''<!doctype html><html lang="es-AR"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="color-scheme" content="light dark"><title>{E(p['title'])} — Compass · {'Wireframe' if wire else 'Diseño'}</title><link rel="stylesheet" href="../assets/app.css"><link rel="stylesheet" href="../assets/redesign.css">{'<link rel="stylesheet" href="../assets/wireframe.css">' if wire else ''}</head><body data-screen="{slug}" class="screen-page {'wireframe' if wire else ''}"><a class="skip" href="#contenido">Ir al contenido</a><div class="review-layout">{rail}<div class="phone {p['mode'] if p['mode'] != 'sheet' else 'has-sheet'}">{status}{top}<main id="contenido" class="screen-content">{title}{body}</main><div class="bottom-stack">{foot}{navigation(p['nav']) if p['nav'] else '<div class="home-indicator" aria-hidden="true"></div>'}</div><footer class="mobile-review"><a href="../index.html#grupo-{int(p['group'][:2])}">Galería</a><span>Boceto {index:03d}</span><a href="../{other}/{slug}.html">{'Diseño' if wire else 'Wireframe'}</a></footer></div></div><script src="../assets/theme.js"></script><script src="../assets/redesign.js"></script></body></html>'''
 
 def gallery():
     groups=list(dict.fromkeys(p['group'] for p in PAGES))
@@ -292,7 +296,141 @@ def gallery():
             i=PAGES.index(p)+1
             cards+=f'<article class="screen-card" data-search="{E((p["title"]+" "+group+" "+p["slug"]).lower())}"><span class="screen-number">{i:03d}</span><h3>{E(p["title"])}</h3><p>{E(p["slug"].replace("-"," "))}</p><div><a href="pantallas/{p["slug"]}.html">Diseño {icon("arrow-right")}</a><a href="wireframes/{p["slug"]}.html">Wireframe</a></div></article>'
         cards+='</div></section>'
-    return f'''<!doctype html><html lang="es-AR"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="color-scheme" content="light dark"><title>Compás — Un ritmo propio</title><link rel="stylesheet" href="assets/app.css"><link rel="stylesheet" href="assets/gallery.css"></head><body id="top" class="gallery-page">{theme_controls()}<a class="skip" href="#coleccion">Ir a las pantallas</a><header class="gallery-header"><a href="index.html" class="wordmark">{icon('compass')}<span>compás</span></a><span>DISEÑO MOBILE · UX & ACCESIBILIDAD</span><a href="#coleccion">Explorar colección {icon('arrow-right')}</a></header><main><section class="gallery-hero"><div><p class="eyebrow">UN RITMO PROPIO</p><h1>Organizarte.<br>Sin perderte<br>en el intento<span>.</span></h1><p class="hero-description">Una agenda que entiende que el día cambia.<br>Vos elegís el rumbo. Compás acompaña.</p><div class="hero-actions"><a class="button primary" href="pantallas/hoy.html">Ver la app {icon('arrow-right')}</a><a class="button secondary" href="wireframes/hoy.html">Explorar wireframes</a></div><div class="gallery-counts"><span><strong>{len(PAGES)}</strong> pantallas y estados</span><span><strong>2</strong> fidelidades</span><span><strong>100%</strong> recursos locales</span></div></div><div class="hero-device"><iframe src="pantallas/hoy.html" title="Vista previa de Hoy" tabindex="-1" loading="eager"></iframe><span class="device-label">HOY · EL PRÓXIMO PASO, A MANO</span></div></section><section class="gallery-intro"><span class="eyebrow">LA COLECCIÓN</span><h2>Una experiencia, de principio a fin.</h2><p>Acceso, tareas, planificación, equipos y acompañamiento. Cada pantalla tiene su versión visual y su estructura en grises. Son bocetos estáticos con datos de ejemplo: no guardan cambios ni solicitan permisos reales.</p></section><div class="collection-layout" id="coleccion"><aside class="gallery-sidebar"><label for="buscar">Encontrar una pantalla</label><input id="buscar" type="search" placeholder="Tareas, bloqueo, racha&#8230;" autocomplete="off" aria-controls="resultados-coleccion" aria-describedby="search-status"><nav aria-label="Secciones de bocetos">{''.join(f'<a href="#grupo-{int(g[:2])}"><span>{g[:2]}</span>{E(g[5:])}</a>' for g in groups)}</nav><p id="search-status" role="status" class="hint"></p></aside><div class="collection" id="resultados-coleccion">{cards}<div class="no-results" id="no-results" role="status" hidden><h2>No encontramos esa pantalla</h2><p>Prob&#225; con otra palabra, como "tarea", "agenda" o "bloqueo".</p></div></div></div></main><footer class="gallery-footer"><span class="wordmark">{icon('compass')} compás</span><p>Un paso a la vez. A tu manera.</p><a href="#top">Volver arriba ↑</a></footer><script src="assets/gallery.js"></script><script src="assets/theme.js"></script></body></html>'''
+    return f'''<!doctype html><html lang="es-AR"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="color-scheme" content="light dark"><title>Compass — Un ritmo propio</title><link rel="stylesheet" href="assets/app.css"><link rel="stylesheet" href="assets/gallery.css"></head><body id="top" class="gallery-page"><a class="skip" href="#coleccion">Ir a las pantallas</a><header class="gallery-header"><a href="index.html" class="wordmark"><span>Compass</span></a><span>DISEÑO MOBILE · UX & ACCESIBILIDAD</span><a href="#coleccion">Explorar colección {icon('arrow-right')}</a></header><main><section class="gallery-hero"><div><p class="eyebrow">UN RITMO PROPIO</p><h1>Compass<span>.</span></h1><p class="hero-description">Planificá por día y revisá qué quedó pendiente al cierre.</p><div class="hero-actions"><a class="button primary" href="pantallas/hoy.html">Ver la app {icon('arrow-right')}</a><a class="button secondary" href="wireframes/hoy.html">Explorar wireframes</a></div><div class="gallery-counts"><span><strong>{len(PAGES)}</strong> pantallas y estados</span><span><strong>2</strong> fidelidades</span><span><strong>100%</strong> recursos locales</span></div></div><div class="hero-device"><iframe src="pantallas/hoy.html" title="Vista previa de Hoy" tabindex="-1" loading="eager"></iframe><span class="device-label">HOY · EL PRÓXIMO PASO, A MANO</span></div></section><section class="gallery-intro"><span class="eyebrow">LA COLECCIÓN</span><h2>Una experiencia, de principio a fin.</h2><p>Acceso, tareas, planificación, equipos y acompañamiento. Cada pantalla tiene su versión visual y su estructura en grises. Son bocetos estáticos con datos de ejemplo: no guardan cambios ni solicitan permisos reales.</p></section><div class="collection-layout" id="coleccion"><aside class="gallery-sidebar"><label for="buscar">Encontrar una pantalla</label><input id="buscar" type="search" placeholder="Tareas, bloqueo, racha&#8230;" autocomplete="off" aria-controls="resultados-coleccion" aria-describedby="search-status"><nav aria-label="Secciones de bocetos">{''.join(f'<a href="#grupo-{int(g[:2])}"><span>{g[:2]}</span>{E(g[5:])}</a>' for g in groups)}</nav><p id="search-status" role="status" class="hint"></p></aside><div class="collection" id="resultados-coleccion">{cards}<div class="no-results" id="no-results" role="status" hidden><h2>No encontramos esa pantalla</h2><p>Prob&#225; con otra palabra, como "tarea", "agenda" o "bloqueo".</p></div></div></div></main><footer class="gallery-footer"><span class="wordmark">Compass</span><p>Un paso a la vez. A tu manera.</p><a href="#top">Volver arriba ↑</a></footer><script src="assets/gallery.js"></script><script src="assets/theme.js"></script></body></html>'''
+
+
+REMOVED = {
+    'mood-guardado': 'hoy?aviso=animo',
+    'imprevisto': 'tarea-no-cumplida',
+    'imprevisto-confirmado': 'hoy?aviso=imprevisto',
+    'decision-confirmada': 'hoy?aviso=decision',
+    'tarea-creada': 'hoy?aviso=creada',
+    'tarea-eliminar': 'tarea-detalle',
+    'tarea-vencida-eliminar': 'tarea-detalle',
+    'proyecto-eliminar': 'proyecto-detalle',
+    'seleccionar-hora': 'seleccionar-fecha',
+    'proyecto-asignar': 'proyecto-detalle',
+    'tarea-completada': 'hoy?aviso=hecha',
+    'tarea-error': 'tarea-crear',
+    'tarea-guardado-deshabilitado': 'tarea-crear',
+    'ajustes-horario': 'ajustes',
+    'onboarding-horario': 'onboarding-permisos',
+}
+
+def route(target):
+    name, _, query = target.partition('?')
+    return name + '.html' + ('?' + query if query else '')
+
+def action(text, target, kind='primary', icon_name=None):
+    return btn(text, target.split('?')[0], kind, icon_name).replace(
+        'href="' + target.split('?')[0] + '.html"', 'href="' + route(target) + '"'
+    )
+
+def record_actions(entity, edit):
+    return (
+        f'<div class="record-actions"><a class="icon-button" href="{edit}.html" '
+        f'aria-label="Editar {entity}" title="Editar {entity}">{icon("pencil")}</a>'
+        f'<button type="button" class="icon-button delete-action" data-delete="{entity}" '
+        f'aria-label="Eliminar {entity}" title="Eliminar {entity}">{icon("trash-2")}</button></div>'
+    )
+
+def entry_tabs(current):
+    tabs = [('Escribir','tarea-crear'), ('Audio','tarea-audio'), ('Foto','tarea-foto')]
+    return '<nav class="entry-tabs" aria-label="Método de creación">' + ''.join(
+        f'<a href="{slug}.html"'
+        + (' aria-current="page"' if slug == current else '') + f'>{label}</a>'
+        for label, slug in tabs
+    ) + '</nav>'
+
+def apply_redesign():
+    import re
+    pages = {p['slug']:p for p in PAGES}
+    def update(slug,title=None,body=None):
+        if title is not None: pages[slug]['title']=title
+        if body is not None: pages[slug]['body']=body
+
+    update('agenda-dia','Agenda diaria', '<nav class="entry-tabs" aria-label="Vista de agenda"><a href="agenda-dia.html" aria-current="page">Día</a><a href="agenda-semana.html">Semana</a><a href="agenda-mes.html">Mes</a></nav>'+week()+section('Miércoles 4','5 tareas')+tasks())
+    update('hoy','Tu día', '<section class="daily-hero"><div><p class="eyebrow">CIERRE DEL DÍA</p><h2><span data-pending>3</span> pendientes</h2><p data-progress-copy>2 de 5 completadas</p><div class="progress"><span data-progress-bar style="width:40%"></span></div><p class="deadline-copy">Lo pendiente al terminar el día cuenta como no cumplido.</p></div></section>'+MOOD+section('Tareas')+tasks()+row('Resumen de ayer','Revisá tu cumplimiento','sun','resumen-ayer'))
+    update('mood','Ánimo y energía','<form data-mood>'+''.join(
+        '<fieldset class="selection"><legend>'+label+'</legend>'+''.join(
+            f'<label for="{key}-{i}"><input id="{key}-{i}" type="radio" name="{key}" value="{value}" required><span>{value}</span></label>'
+            for i,value in enumerate(values)
+        )+'</fieldset>' for key,label,values in (
+            ('mood','¿Cómo te sentís?',('Bajón','Más o menos','Bien')),
+            ('energy','¿Cuánta energía tenés?',('Poca','Media','Alta'))
+        )
+    )+'<button class="button primary">Guardar cómo me siento</button></form>')
+    update('tarea-detalle','Detalle de tarea',tag('Pendiente','task-status')+'<div class="record-heading"><h2 data-task-title>Preparar la entrega de UX</h2>'+record_actions('tarea','tarea-editar')+'</div>'+row('Fecha','4 de noviembre · 0 de 2 cambios usados','calendar-days','reorganizar-manual')+row('Proyecto','Facultad','folders','proyecto-detalle')+'<p class="detail-description" data-task-notes>Revisar los flujos y preparar la entrega.</p><div class="detail-actions"><button class="button primary" type="button" data-complete>'+icon('check')+'Marcar como hecha</button>'+action('No voy a poder hacerla','tarea-no-cumplida','secondary','flag')+'</div>')
+    update('tarea-no-cumplida','Registrar incumplimiento','<p data-task-title>Preparar la entrega de UX</p><form data-missed><fieldset class="selection"><legend>¿Qué pasó?</legend><label for="reason-decision"><input id="reason-decision" type="radio" name="reason" value="decision" required><span><strong>Fue mi decisión</strong><small>Cuenta para el umbral de bloqueo.</small></span></label><label for="reason-imprevisto"><input id="reason-imprevisto" type="radio" name="reason" value="imprevisto"><span><strong>Tuve un imprevisto</strong><small>No cuenta para el bloqueo si te queda cupo.</small></span></label></fieldset><button class="button primary">Registrar</button></form>')
+    update('tarea-crear','Crear tarea',entry_tabs('tarea-crear')+'<form data-task-form>'+field('Nombre de la tarea',hint='Ej. Preparar la entrega de UX')+row('Fecha','Elegí el día de cierre','calendar-days','seleccionar-fecha')+row('Proyecto','Personal','folders','seleccionar-proyecto')+field('Notas')+'<button class="button primary">Crear tarea</button></form>')
+    update('tarea-editar','Editar tarea','<form data-task-form>'+field('Nombre de la tarea','Preparar la entrega de UX')+row('Fecha','Cambiarla usa una reprogramación','calendar-days','reorganizar-manual')+row('Proyecto','Facultad','folders')+field('Notas','Revisar los flujos y preparar la entrega.')+'<button class="button primary">Guardar cambios</button></form>')
+    update('seleccionar-fecha','Fecha de la tarea','<form data-date>'+field('Fecha','2026-11-04','date')+'<p>La tarea vence al terminar ese día.</p><button class="button primary">Guardar</button></form>')
+    update('reorganizar-manual','Cambiar fecha','<form data-reschedule>'+field('Nueva fecha','2026-11-05','date')+note('Este cambio usa una reprogramación','Cada tarea admite hasta dos cambios de fecha.','warning','flag')+'<button class="button primary">Confirmar cambio de fecha</button></form>')
+    update('seleccionar-proyecto','Proyecto de la tarea','<form data-project><fieldset class="selection"><legend>Elegí un proyecto</legend>'+''.join(f'<label for="project-{i}"><input id="project-{i}" type="radio" name="project" value="{E(name)}"{" checked" if name=="Personal" else ""}><span>{E(name)}</span></label>' for i,name in enumerate(('Personal','Facultad','Trabajo','Final de Sistemas')))+'</fieldset><button class="button primary">Guardar</button></form>')
+    for slug in ('tarea-audio','tarea-foto'):
+        body=pages[slug]['body']
+        body=re.sub(r'^<div class="pills">.*?</div>', '', body, count=1, flags=re.S)
+        if slug=='tarea-audio':
+            body=body.replace('<span class="capture-icon">'+icon('mic')+'</span>','')
+            body=body.replace(btn('Grabar tarea','permiso-microfono',ico='mic'),btn('Grabar tarea','permiso-microfono'))
+        update(slug, 'Tarea por audio' if slug=='tarea-audio' else 'Tarea por foto',entry_tabs(slug)+body)
+    update('proyecto-detalle','Detalle de proyecto',PROJECTDETAIL.replace('<h2>Entrega UX</h2>','<div class="record-heading"><h2>Entrega UX</h2>'+record_actions('proyecto','proyecto-editar')+'</div>'))
+    update('proyecto-editar','Editar proyecto','<form data-project-edit>'+field('Nombre del proyecto','Entrega UX')+field('Descripción','Preparar y revisar la entrega.')+'<div class="field"><label for="project-type">Tipo de proyecto</label><select id="project-type" name="type"><option value="personal">Personal</option><option value="group">De grupo</option></select></div><div class="field" data-group-field hidden><label for="project-group">Grupo</label><select id="project-group" name="group"><option>Alto voltaje</option><option>Final de Sistemas</option></select></div><button class="button primary">Guardar cambios</button></form>')
+    pages['resumen-ayer']['body']=pages['resumen-ayer']['body'].replace(btn('Mirar el día de hoy','hoy'),task('Revisar las notas de clase','','Facultad','done')+task('Responder al equipo','','Trabajo','done')+btn('Mirar el día de hoy','hoy'))
+    pages['resumen-ayer']['body']=pages['resumen-ayer']['body'].replace(
+        btn('Mirar el día de hoy','hoy'),section('No cumplida')+row('Actualizar la planificación','Imprevisto registrado','flag')+btn('Mirar el día de hoy','hoy')
+    )
+    pages['ajustes']['body']='<section class="appearance"><h2>Apariencia</h2>'+theme_controls()+'</section>'+pages['ajustes']['body']
+    direct_titles={'mood':'Ánimo y energía','agenda-dia':'Agenda diaria','agenda-semana':'Agenda semanal','agenda-mes':'Agenda mensual','proyectos':'Proyectos','grupos':'Grupos','progreso':'Progreso','ajustes':'Ajustes','resumen-ayer':'Resumen de ayer','bienvenida':'Compass','perfil':'Perfil','consecuencias':'Consecuencias','notificaciones':'Notificaciones','bloqueo-activo':'Bloqueo activo'}
+    direct_titles.update({
+        'registro':'Crear cuenta','iniciar-sesion':'Iniciar sesión','recuperar-clave':'Recuperar contraseña',
+        'agenda-filtros':'Filtrar agenda','buscar-tareas':'Buscar tareas','proyecto-crear':'Nuevo proyecto',
+        'grupo-detalle':'Alto voltaje','grupo-invitar':'Invitar integrantes','grupo-crear':'Crear grupo',
+        'grupo-responsables':'Responsables de la tarea','historial':'Historial de cumplimiento',
+        'racha-propia':'Mi racha','racha-grupo':'Racha del grupo','perfil-editar':'Editar perfil',
+        'reorganizar-sugerencia':'Propuesta de reprogramación','audio-revision':'Revisar transcripción',
+        'foto-revision':'Revisar texto de la foto','bloqueo-motivo':'Motivo del bloqueo',
+        'bloqueo-pausar':'Pausar bloqueo','bloqueo-pausado':'Bloqueo en pausa',
+        'ajustes-permisos':'Permisos','ajustes-cupos':'Cupos y límites',
+    })
+    for slug,title in direct_titles.items(): pages[slug]['title']=title
+    for p in PAGES:
+        body=p['body']
+        body=body.replace(icon('compass'),'').replace('readonly ','')
+        body=body.replace(row('Horario del resumen','Todos los días · 08:00','clock','ajustes-horario'),'')
+        body=body.replace('a la hora que elegiste','al cierre del día').replace('Todavía tenés media hora para avanzar.','Todavía podés completarla hoy.')
+        body=body.replace('Evaluado hoy a las','Evaluado al cierre del día').replace('Acompañamiento, horarios y permisos','Acompañamiento y permisos')
+        body=body.replace('vence.', 'vence al cierre del día.').replace('· Hoy a las','· Hoy').replace('· a las','').replace(' ·  · ',' · ')
+        if p['slug'] in {'tarea-audio','tarea-foto'}:
+            body=re.sub(r'<a class="button text" href="tarea-crear.html">(?:[^<]|<(?!/a>))*</a>', '', body)
+        if p['slug']=='mood':
+            body=body.replace('href="mood-guardado.html"', 'href="hoy.html?aviso=animo" data-save-mood')
+        if p['slug'] in {'audio-revision','foto-revision'}:
+            body=body.replace('href="tarea-creada.html"','href="tarea-crear.html" data-review-task')
+
+        body=re.sub(r'<input\b[^>]*type="time"[^>]*>', '', body)
+        body=re.sub(r'\s*\((?:opcional|obligatori[oa])\)|\b(?:[Oo]pcional(?:es)?|[Oo]bligatori[oa]s?)\b', '', body)
+        body=re.sub(r'(?:\s*[·,]\s*|\s+a las\s+|\s+hasta las\s+|\s+antes de las\s+|\s+desde las\s+)\d{1,2}:\d{2}\b', '', body)
+        body=re.sub(r'(?<!\d)\d{1,2}:\d{2}(?!\d)', '', body) if p['slug'] not in {'bloqueo-activo','bloqueo-pausado','tarea-audio'} else body
+        body=body.replace('dentro de 30 minutos','al cierre del día').replace('horas son','fechas son')
+        body=re.sub(r'<div class="field"><label[^>]*>[^<]*(?:Hora|horario)[^<]*</label>\s*<p[^>]*>.*?</p></div>','',body,flags=re.S)
+        for old,new in REMOVED.items():
+            body=body.replace(f'href="{old}.html"',f'href="{route(new)}"')
+            if p['back']==old: p['back']=new.split('?')[0]
+        p['body']=body
+    PAGES[:]=[p for p in PAGES if p['slug'] not in REMOVED]
+    for page in PAGES:
+        if page['slug'] in ('agenda-semana','agenda-mes'):
+            active=page['slug']
+            tabs='<nav class="entry-tabs" aria-label="Vista de agenda">'+''.join(
+                f'<a href="{slug}.html"'+(' aria-current="page"' if slug==active else '')+f'>{name}</a>'
+                for name,slug in [('Día','agenda-dia'),('Semana','agenda-semana'),('Mes','agenda-mes')]
+            )+'</nav>'
+            page['body']=re.sub(r'^<div class="pills">.*?</div>',tabs,page['body'],count=1,flags=re.S)
+
+    for folder in ('pantallas','wireframes'):
+        for slug in REMOVED:
+            (OUT/folder/(slug+'.html')).unlink(missing_ok=True)
 
 def build():
     for folder,wire in [('pantallas',False),('wireframes',True)]:
@@ -302,4 +440,6 @@ def build():
     (WORK/'inventario-compas.json').write_text(json.dumps([{k:v for k,v in p.items() if k!='body'} for p in PAGES],ensure_ascii=False,indent=2),encoding='utf-8')
     print(f'{len(PAGES)} screens × 2 fidelities = {len(PAGES)*2} HTML screens; gallery written.')
 
-if __name__=='__main__':build()
+if __name__=='__main__':
+    apply_redesign()
+    build()
